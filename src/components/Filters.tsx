@@ -10,7 +10,11 @@ interface FiltersProps {
 
 const Filters: React.FC<FiltersProps> = ({ filterSettings, setFilterSettings }) => {
 
-  const reset = () => setFilterSettings({sortByCountry: false, input: ''});
+  const reset = () => setFilterSettings({
+    color: false,
+    sortByCountry: false,
+    input: ''
+  });
 
   const sort = () => setFilterSettings( prev => ({
       ...filterSettings,
@@ -31,7 +35,9 @@ const Filters: React.FC<FiltersProps> = ({ filterSettings, setFilterSettings }) 
   return (
     <div className='flex w-full justify-center items-center p-8'>
       <Button onClick={changeColor}> Color row </Button>
-      <Button onClick={sort}> Sort By Country </Button>
+      <Button onClick={sort} isActive={filterSettings.sortByCountry}>
+        Sort By Country
+      </Button>
       <Button onClick={reset}> Reset State </Button>
       <Input
         onChange={handleOnChange}
