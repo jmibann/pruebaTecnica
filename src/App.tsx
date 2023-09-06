@@ -45,12 +45,12 @@ function App() {
   
   const sortedUsers = useMemo(() => {
     return sortByCountry
-      ? filteredUsers.toSorted(sorterFn)
+      ? [...filteredUsers].sort(sorterFn)  // toSorted is not supported
       : filteredUsers
   }, [sortByCountry, filteredUsers]); 
 
   const deleteUser = ({name, value}: ID) =>
-    setUsers( prev => prev.filter( ({id}) => id.value !== value && id.name !== name));
+    setUsers( filteredUsers.filter( ({id}) => id.value !== value && id.name !== name));
 
   return (
     <>

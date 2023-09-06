@@ -13,11 +13,11 @@ interface TableProps {
 const Table: React.FC<TableProps> = ({ color, users, deleteUser }) => {
   const cellClass = 'p-2 mx-4 w-1/5 flex justify-center';
   const rowColorClass = color
-    ? 'odd:bg-cyan-100 even:bg-cyan-200'
+    ? 'odd:bg-amber-50 even:bg-amber-100'
     : 'odd:bg-white even:bg-slate-50';
   const rowClass = 'flex w-full items-center '.concat(rowColorClass);
   const tHeadClass =
-    `flex flex-row w-full rounded-md justify-around ${color ? 'bg-cyan-200' :'bg-slate-50'}`
+    `flex flex-row w-full rounded-md justify-around ${color ? 'bg-amber-100' :'bg-slate-50'}`
 
     return (
       <div className='flex justify-center items-center w-full px-8'>
@@ -35,7 +35,7 @@ const Table: React.FC<TableProps> = ({ color, users, deleteUser }) => {
           <tbody>
             {
               users.map(({ id, name, location, picture}, idx) => (
-                <tr key={idx + id.name + id.value} className={rowClass}>
+                <tr key={idx + id.name + id.value} className={rowClass} data-testid="table-row">
                   <td className={cellClass}>
                     <img className="rounded-full" src={picture.thumbnail}/>
                   </td>

@@ -1,13 +1,9 @@
 import React from 'react';
 
-interface InputProps {
-  children?: React.ReactNode;
-  value?: string;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
-  placeholder?: string;
+interface InputProps extends React.HTMLProps<HTMLInputElement> {
 }
 
-const Input: React.FC<InputProps> = ({ children, value, placeholder, onChange }) => {
+const Input: React.FC<InputProps> = ({ children, value, placeholder, onChange, ...rest }) => {
   const inputClass = 'border border-stone-300 p-2 rounded-md'
     return (
       <input
@@ -15,6 +11,7 @@ const Input: React.FC<InputProps> = ({ children, value, placeholder, onChange })
         value={value}
         placeholder={placeholder}
         onChange={onChange}
+        {...rest}
         >
         { children }
       </input>

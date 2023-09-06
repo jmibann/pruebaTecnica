@@ -42,6 +42,7 @@ const Filters: React.FC<FiltersProps> = ({ filterSettings, setFilterSettings }) 
       <Input
         onChange={handleOnChange}
         value={filterSettings.input}
+        aria-label ='filter-input'
         placeholder='Filter by country'
       />
     </div>);
